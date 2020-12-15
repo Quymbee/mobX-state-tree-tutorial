@@ -1,3 +1,6 @@
+This is a tutorial from [egghead](https://egghead.io/lessons/react-test-mobx-state-tree-models-by-recording-snapshots-or-patches)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
