@@ -1,4 +1,4 @@
-import { types } from "mobx-state-tree";
+import { types, getParent, destroy } from "mobx-state-tree";
 
 export const WishListItem = types
   .model({
@@ -23,6 +23,9 @@ export const WishListItem = types
     changeImage(newImage) {
       self.image = newImage;
     },
+    remove() {
+      getParent(self, 2).remove(self);
+    },
   }));
 
 export const WishList = types
@@ -32,6 +35,9 @@ export const WishList = types
   .actions((self) => ({
     add(item) {
       self.items.push(item);
+    },
+    remove(item) {
+      destroy(item);
     },
   }))
   .views((self) => ({
