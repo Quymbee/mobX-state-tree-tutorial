@@ -4,16 +4,20 @@ import { observer } from "mobx-react";
 import WishListItemView from "./WishListItemView";
 import WishListItemEntry from "./WishListItemEntry";
 
-const WishListView = ({ wishList }) => (
-  <div className="list">
-    <ul>
-      {wishList.items.map((item, idx) => (
-        <WishListItemView key={idx} item={item} />
-      ))}
-    </ul>
-    Total: {wishList.totalPrice} €
-    <WishListItemEntry wishList={wishList} />
-  </div>
-);
+const WishListView = (props) => {
+  const { wishList, readonly } = props;
+
+  return (
+    <div className="list">
+      <ul>
+        {wishList.items.map((item, index) => (
+          <WishListItemView key={index} item={item} readonly={readonly} />
+        ))}
+      </ul>
+      Total: {wishList.totalPrice} €
+      {!readonly && <WishListItemEntry wishList={wishList} />}
+    </div>
+  );
+};
 
 export default observer(WishListView);
